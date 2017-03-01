@@ -16,9 +16,8 @@ SHA = Text(root, height=4, width=60)
 SHA.pack()
 SHA.insert(END, "")
 
-
-def SHA_encoder(encodedStr):
-    sData = data.get('1.0', INSERT)
+def SHA_encoder():
+    sData = data.get('1.0', 'end-1c')
     eData = sData.encode('utf-8')
     #print(type(eData))
     encodedStr = hashlib.sha3_256()
@@ -29,7 +28,10 @@ def SHA_encoder(encodedStr):
     print(eData)
     print(encodedStr.hexdigest())
 
-data.bind("<Key>", SHA_encoder)
+button = Button(root, text="PRESS ME", command=SHA_encoder)
+button.pack()
+
+#data.bind("<Key>", SHA_encoder)
 
 #print(sData)
 mainloop()
